@@ -1,36 +1,26 @@
 /*
-¿Que nos pide el ejercicio?
-
-Tenemos que filtrar de una lista de compañias Facebook, Google, Microsoft, Apple, IBM, Oracle and Amazon
-aquellas que tengan mas de una O dentro del nombre.
-
-1. Saber donde se encuentra cada empresa en array. Es decir, tenemos que ir empresa a empresa mirando cual es el nombre
-    ** Iterar sobre cada elemento del array**
-    Ir uno a uno dentro de los elementos.
-
+Quita los simbolos de la frase y encuentra la palabra mas usada
 */
+const sentence = '%I $am@% a %tea@cher%, &and& I lo%#ve %te@a@ching%;. The@re $is no@th@ing; &as& mo@re rewarding as educa@ting &and& @emp%o@weri@ng peo@ple. ;I found tea@ching m%o@re interesting tha@n any ot#her %jo@bs. %Do@es thi%s mo@tiv#ate yo@u to be a tea@cher!? %Th#is 30#Days&OfJavaScript &is al@so $the $resu@lt of &love& of tea&ching'
 
-const companies = ["Facebook", "Google", "Microsoft", "Apple", "IBM", "Oracle", "Amazon"]
+const simbolos = ["%","$",";","@",".","!",";","#","?",",","&"]
 
+const sentence_array = sentence.split(" ")
 
-//Vamos a ir compañia a compañia dentro de nuestro ARRAY
-for (let posicionCompañia = 0; posicionCompañia < companies.length; posicionCompañia++) {
-    // Vamos a ir letra por letra para ver si tiene O
-    //AQUI HABLAMOS DE PALABRAS 
-    let company = companies[posicionCompañia] // Vamos a tener Facebook, Google ....
-    let numero_de_o = 0
+const palabras = []
 
-    for (let posicionLetra = 0; posicionLetra < company.length; posicionLetra++) {
+for (let index = 0; index < sentence_array.length; index++) {
+    let palabra = sentence_array[index]
+    let numero_caracteres = 0
+
+    for (let posicionLetra = 0; posicionLetra < palabra.length; posicionLetra++) {
         //AQUI HABLAMOS DE LETRAS
-        let letra = company[posicionLetra]
+        let letra = palabra[posicionLetra]
+        if(simbolos.includes(letra)){
+            palabra = palabra.replace(letra,"")
         
-        if (letra === "o"){
-            numero_de_o = numero_de_o + 1   
         }
     }
-    //VOLVEMOS A LA PALABRA
-
-    if (numero_de_o > 1)
-        console.log(company)
-
+    palabras.push(palabra)
 }
+console.log(palabras)
