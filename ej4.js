@@ -1,5 +1,11 @@
 const cards = [
 	{
+		"type": "MasterCard",
+		"number": "4532750907210784",
+		"expiration": "08/24",
+		"owner": "Max Raynor"
+	},
+	{
 		"type": "Visa Retired",
 		"number": "2521245243761597",
 		"expiration": "05/25",
@@ -595,7 +601,7 @@ const cards = [
 	}
 ]
 
-const cardTypes = [];
+let cardTypes = [];
 
 cards.forEach((cardSingular) => {
     if (!cardTypes.includes(cardSingular.type))
@@ -610,36 +616,5 @@ cardTypes.forEach((type) => {
 	cardsGrouped[type] = cards.filter((card) => card.type === type)
 })
 console.log(cardsGrouped)
-console.log(Object.keys(cardsGrouped))
-
-const root = document.getElementById("root")
-const table = document.createElement("table")
-const tableHead = document.createElement("thead")
-
-cardTypes.forEach((type) => {
-	console.log(type)
-	const rowHead = document.createElement("th")
-	rowHead.innerText=type
-	tableHead.appendChild(rowHead)
-})
-table.appendChild(tableHead)
-
-
-const tBody = document.createElement("tbody")
-table.appendChild(tBody)
-
-const row = document.createElement("tr")
-cardTypes.forEach((type) => {
-	const tableData = document.createElement("td")
-	console.log(type)
-	cardsGrouped[type].forEach((person) =>{
-		console.log(person)
-		const nameParraf = document.createElement("p")
-		nameParraf.innerText = person.owner
-		tableData.append(nameParraf)
-	})
-	row.appendChild(tableData)
-
-})
-table.append(row)
-root.appendChild(table)
+const value = prompt()
+console.log(cardsGrouped[value])
