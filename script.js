@@ -614,6 +614,7 @@ console.log(Object.keys(cardsGrouped))
 
 const root = document.getElementById("root")
 const table = document.createElement("table")
+table.classList.add("table")
 const tableHead = document.createElement("thead")
 
 cardTypes.forEach((type) => {
