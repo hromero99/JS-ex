@@ -460,9 +460,9 @@ const personas = [
 		image: "http://placeimg.com/640/480/people",
 	},
 ];
-let personasParaMostrar = personas
+let personasParaMostrar = personas;
 const root = document.getElementById("root");
-
+const searchInput = document.getElementById("name");
 const createHtmlFromPerson = (persona) => {
 	const parraf = document.createElement("p");
 	const deleteButton = document.createElement("button");
@@ -470,13 +470,14 @@ const createHtmlFromPerson = (persona) => {
 	deleteButton.addEventListener("click", (event) => {
 		console.log("ASD");
 		console.log(event.target.id);
-		root.innerHTML = ""
-		personasParaMostrar = personasParaMostrar
-			.filter((persona) => persona.id != event.target.id)
-		
+		root.innerHTML = "";
+		personasParaMostrar = personasParaMostrar.filter(
+			(persona) => persona.id != event.target.id
+		);
+
 		personasParaMostrar.forEach((persona) => {
-				createHtmlFromPerson(persona);
-			});
+			createHtmlFromPerson(persona);
+		});
 	});
 	parraf.innerText = `${persona.firstname} ${persona.lastname}`;
 	root.appendChild(deleteButton);
@@ -487,4 +488,21 @@ personas.forEach((persona) => {
 	createHtmlFromPerson(persona);
 });
 
+searchInput.addEventListener("change", (event) => {
+	let textoDelUsuario = event.target.value;
+	root.innerHTML = "";
+	if (textoDelUsuario === ""){
+		personas.forEach((persona) => {
+			createHtmlFromPerson(persona);
+		});
+	}
+	else{
+		personasParaMostrar = personasParaMostrar.filter(
+			(persona) =>  persona.firstname.includes(textoDelUsuario)
+		);
+		personasParaMostrar.forEach((persona) => {
+			createHtmlFromPerson(persona);
+		});
+	}
 
+});
