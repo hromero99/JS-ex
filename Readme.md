@@ -11,6 +11,11 @@
 
 1. Con los tipos de tarjetas que se han filtrado anteriormente, crear tantos botones como tipos de tarjeta de crédito que existen, de forma que al hacer _click_ sobre cada uno de ellos, los datos se filtren para que solo se vean las tarjetas de ese tipo.
 
+1.1  Con los tipos de tarjetas que se han filtrado anteriormente,  --> array.filter() 
+1.2  crear tantos botones como tipos de tarjeta de crédito que existen, --> createElement
+1.3  de forma que al hacer _click_ sobre cada uno de ellos --> evento click
+1.4  los datos se filtren para que solo se vean las tarjetas de ese tipo.
+
 2. Agrear un input de búsqueda, de forma que al introducir el mes de caducidad aparezcan las tarjetas de crédito que caducan para ese mes. 
 
 3. Hacer lo mismo para el año. De forma que tienes que filtrar por año y mes. Ej: Tarjetas que caducan el mes 04 del año 25
