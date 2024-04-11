@@ -610,6 +610,7 @@ const writeCardListInHtml = (cardList) => {
 };
 
 let cardTypes = [];
+let cardsFiltered = [];
 
 const root = document.getElementById("root");
 const cardsElement = document.getElementById("cards");
@@ -624,6 +625,7 @@ const button = document.createElement("button");
 button.innerText = "Todas";
 button.addEventListener("click", () => {
 	cardsElement.innerHTML = "";
+	cardsFiltered = cards
 	writeCardListInHtml(cards);
 });
 root.appendChild(button);
@@ -635,6 +637,7 @@ cardTypes.forEach((type) => {
 
 	button.addEventListener("click", () => {
 		cardsElement.innerHTML = "";
+		cardsFiltered = cards.filter((card) => card.type === type)
 		writeCardListInHtml(cards.filter((card) => card.type === type));
 	});
 
@@ -652,14 +655,18 @@ input.addEventListener("change", (event) => {
 		¿Cómo comparo los 2 primero numers con el user input?
 		¿Como cojo del string solo los 2 primeros numeros?
 	*/
-	
+
 	// Con splice
 	/*writeCardListInHtml(
 		cards.filter((card) => card.expiration.slice(0, 2) === userInput)
 	); */
 
 	writeCardListInHtml(
-		cards.filter((card) => card.expiration.split("/")[0] >= userInput)
+		cardsFiltered.filter(
+			(card) =>
+				card.expiration.split("/")[0] >= userInput.split("/")[0] &&
+				card.expiration.split("/")[1] >= userInput.split("/")[1]
+		)
 	);
 });
 
