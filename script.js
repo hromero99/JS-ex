@@ -601,9 +601,10 @@ const cards = [
 	},
 ];
 const writeCardListInHtml = (cardList) => {
+	cardsElement.innerHTML = "";
 	cardList.forEach((card) => {
 		const carta = document.createElement("p");
-		carta.innerText = `${card.type} ${card.number}`;
+		carta.innerText = `${card.type} ${card.number} ${card.expiration}`;
 		cardsElement.appendChild(carta);
 	});
 };
@@ -619,6 +620,14 @@ cards.forEach((cardSingular) => {
 });
 console.log(cardTypes);
 
+const button = document.createElement("button");
+button.innerText = "Todas";
+button.addEventListener("click", () => {
+	cardsElement.innerHTML = "";
+	writeCardListInHtml(cards);
+});
+root.appendChild(button);
+
 cardTypes.forEach((type) => {
 	console.log(type);
 	const button = document.createElement("button");
@@ -633,5 +642,27 @@ cardTypes.forEach((type) => {
 });
 
 writeCardListInHtml(cards);
+
+const input = document.createElement("input");
+input.addEventListener("change", (event) => {
+	let userInput = event.target.value;
+	/*
+		EL user input nos da 05 06 07...
+		pero el expiration 05/24 04/25
+		¿Cómo comparo los 2 primero numers con el user input?
+		¿Como cojo del string solo los 2 primeros numeros?
+	*/
+	
+	// Con splice
+	/*writeCardListInHtml(
+		cards.filter((card) => card.expiration.slice(0, 2) === userInput)
+	); */
+
+	writeCardListInHtml(
+		cards.filter((card) => card.expiration.split("/")[0] >= userInput)
+	);
+});
+
+root.appendChild(input);
 
 console.log();

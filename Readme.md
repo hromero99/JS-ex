@@ -18,6 +18,11 @@
 
 2. Agrear un input de búsqueda, de forma que al introducir el mes de caducidad aparezcan las tarjetas de crédito que caducan para ese mes. 
 
+2.1 Creamos un input
+2.2 Filtramos
+2.2.1 separamos mes y año
+2.3 AppendChild
+
 3. Hacer lo mismo para el año. De forma que tienes que filtrar por año y mes. Ej: Tarjetas que caducan el mes 04 del año 25
 
 El 2 y 3 puedes hacerlo en el mismo input
